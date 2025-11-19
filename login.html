@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login SG-Lite  Kabupaten Pati</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="left">
+        <div style="display:flex;justify-content:center;align-items:center;margin-bottom:1rem;">
+            <img src="logo.png" alt="Logo Kabupaten Pati" width="50" height="50" />
+        </div>
+      <h1 just align="center" class="title"> 
+        SG-Lite
+    </h1>
+      <p class="subtitle" just align="center" class="title">Kabupaten Pati</p>
+      <p class="welcome-text" just align="center" class="title">Selamat Datang di Portal Pelayanan Digital</p>
+      <p class="description" align="center">
+        Akses berbagai layanan publik Kabupaten Pati dengan mudah, cepat, dan aman.
+      </p>
+      <ul class="features-list" >
+        <li >
+          <span class="checkmark"></span>
+          <div class="feature-text">
+            <strong>Pelayanan 24/7</strong>
+            <p>Akses layanan kapan saja dan dimana saja</p>
+          </div>
+        </li>
+        <li>
+          <span class="checkmark"></span>
+          <div class="feature-text">
+            <strong>Aman & Terpercaya</strong>
+            <p>Data Anda dilindungi dengan enkripsi tingkat tinggi</p>
+          </div>
+        </li>
+        <li>
+          <span class="checkmark"></span>
+          <div class="feature-text">
+            <strong>Proses Cepat</strong>
+            <p>Hemat waktu tanpa perlu antri panjang</p>
+          </div>
+        </li>
+      </ul>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507204.77689072053!2d111.03706349999999!3d-6.704077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d387a01fac95%3A0x3027a76e352bb20!2sKabupaten%20Pati%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1763525536213!5m2!1sid!2sid" width="400" height="200" align="center" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <section class="right">
+      <h2 align="center">Masuk ke Akun Anda</h2>
+      <p class="info-text" align="center" >Masukkan NIK, email, dan password untuk mengakses layanan</p>
+      <form id="loginForm" novalidate>
+         <label for="NIK">NIK</label>
+        <div class="input-wrapper">
+          <input type="NIK" id="NIK" name="NIK" placeholder="3318 XXX" required />
+          <span class="input-icon NIK-icon" aria-hidden="true">📧</span>
+        </div>
+
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <input type="email" id="email" name="email" placeholder="nama@email.com" required />
+          <span class="input-icon email-icon" aria-hidden="true">📧</span>
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <input type="password" id="password" name="password" placeholder="Masukkan password" required />
+          <button type="button" class="input-icon password-toggle" aria-label="Tampilkan password" tabindex="0">👁️</button>
+        </div>
+
+        <div class="checkbox-row">
+          <label><input type="checkbox" name="remember" /> Ingat saya</label>
+          <a href="#" class="forgot-password" onclick="alert('Fitur lupa password belum tersedia.'); return false;">Lupa password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary">Masuk</button>
+      </form>
+
+      <div class="divider"><span>Atau masuk dengan</span></div>
+
+      <div class="social-login">
+        <button class="btn-social google" aria-label="Login dengan Google">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="" /> Google
+        </button>
+        <button class="btn-social facebook" aria-label="Login dengan Facebook">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png" alt="" /> Facebook
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Toggle password visibility
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.querySelector('.password-toggle');
+
+    toggleBtn.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      toggleBtn.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+
+    toggleBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleBtn.click();
+      }
+    });
+
+    // Simple login simulation
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const email = e.target.email.value.trim();
+      const password = e.target.password.value.trim();
+
+      if (!email || !password) {
+        alert('Mohon isi email dan password dengan benar.');
+        return;
+      }
+      // contoh kredensial demo
+      if(email.toLowerCase() === 'admin' && password === 'admin123'){
+        alert('Login berhasil! Mengarahkan ke halaman utama...');
+        window.location.href = 'index.html';
+      } else {
+        alert('Email atau password salah.');
+      }
+    });
+  </script>
+</body>
+</html>
